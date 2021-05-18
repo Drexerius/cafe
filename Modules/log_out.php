@@ -3,4 +3,4 @@ require '../connect.php';
 session_start();
 $_SESSION['login'] = 0;
 
-header('Location: ../index.php');
+header('Location: ../index.php?page=main');

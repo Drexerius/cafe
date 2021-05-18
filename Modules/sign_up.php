@@ -12,4 +12,4 @@ if ($type == 'owner') {$type = 1;} else {$type = 0;}
 mysqli_query($db, "INSERT INTO users (`login`, `password`, `email`, `owner`) VALUES ('$login', '$password', '$email', '$type')");
 
 $_SESSION['login'] = $login;
-header('Location: ../index.php');
+header('Location: ../index.php?page=main');

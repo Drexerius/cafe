@@ -18,4 +18,4 @@ if ($repeat == true) {
     mysqli_query($db, "UPDATE users SET money = $new_money, points = $new_points WHERE id = " . $user['id']);
     mysqli_query($db, "DELETE FROM acquired_money WHERE user_id = " . $user['id'] . " AND menu_id = " . $item['id']);
 }
-header('Location: ../content/owner_menu.php');
+header('Location: ../index.php?page=owner_menu');

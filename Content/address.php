@@ -1,7 +1,3 @@
-<?php
-require '../connect.php';
-session_start();
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,6 +8,6 @@ session_start();
     <title>Address</title>
 </head>
 <body>
-<button><a href="../index.php" style="font-size: 2em; text-decoration: none; color: black;">Return</a></button>
+    
 </body>
 </html>

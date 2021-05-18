@@ -1,7 +1,3 @@
-<?php
-require '../connect.php';
-session_start();
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +8,6 @@ session_start();
     <title>Owner Menu</title>
 </head>
 <body>
-<button><a href="../index.php" style="font-size: 2em; text-decoration: none; color: black;">Return</a></button>
 <?php
 echo '<br>';
 $balance = getBalance();
@@ -35,7 +30,7 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
         <td><?= $item['points_required']; ?></td>
         <td><?= $item['money']; ?></td>
         <td><?= $item['points']; ?></td>
-        <td><button><a href="../modules/buy_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
+        <td><button><a href="modules/buy_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
     </tr>
     <?php } ?>
 </table>
@@ -53,7 +48,7 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
             <td><?= $item['name']; ?></td>
             <td><?= $item['points_required']; ?></td>
             <td><?= $item['points']; ?></td>
-            <td><button><a href="../modules/buy_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
+            <td><button><a href="modules/buy_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
         </tr>
     <?php } ?>
 </table>
@@ -75,7 +70,7 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
             <td><?= $item['points_required']; ?></td>
             <td><?= $item['money']; ?></td>
             <td><?= $item['points']; ?></td>
-            <td><button><a href="../modules/sell_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Sell</a></button></td>
+            <td><button><a href="modules/sell_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Sell</a></button></td>
         </tr>
     <?php } ?>
 </table>
@@ -93,7 +88,7 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
             <td><?= $item['name']; ?></td>
             <td><?= $item['points_required']; ?></td>
             <td><?= $item['points']; ?></td>
-            <td><button><a href="../modules/sell_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Sell</a></button></td>
+            <td><button><a href="modules/sell_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Sell</a></button></td>
         </tr>
     <?php } ?>
 </table>

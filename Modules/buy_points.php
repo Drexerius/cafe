@@ -18,4 +18,4 @@ if ($user['points'] >= $item ['points_required'] && $repeat == false) {
     mysqli_query($db, "UPDATE users SET points = $new_points WHERE id = " . $user['id']);
     mysqli_query($db, "INSERT INTO acquired_points (`user_id`, `menu_id`) VALUES ('" . $user['id'] . "', '" . $item['id'] . "')");
 }
-header('Location: ../content/owner_menu.php');
+header('Location: ../index.php?page=owner_menu');
