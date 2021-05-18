@@ -8,6 +8,7 @@
     <title>Contacts</title>
 </head>
 <body>
-
+    <h2>Phone: +0 256 696 320</h2>
+    <h2>Email: BlackTech@cafe.alfheim.com</h2>
 </body>
 </html>
