@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 21 2021 г., 21:01
+-- Время создания: Май 21 2021 г., 21:19
 -- Версия сервера: 10.4.17-MariaDB
 -- Версия PHP: 8.0.1
 
@@ -203,7 +203,8 @@ INSERT INTO `users` (`id`, `owner`, `login`, `password`, `email`, `money`, `poin
 (1, 0, 'Test1', '6779a4fa7ad34e7a8b78f20cbb6ce8a9', 'Test1@gmail.com', 1515, 0, 4),
 (2, 0, 'Test2', '830bf57205215d17a453cf5d8c8212ea', '', 0, 365, 3),
 (3, 1, 'Test3', 'bd890f18b91394848bc8094675dc0fae', '', 90, 12135, 0),
-(4, 1, 'Test4', 'a19e363ea0e2e612bbdad8e742f2ff7b', 'Test4@gmail.com', 4560, 1145, 0);
+(4, 1, 'Test4', 'a19e363ea0e2e612bbdad8e742f2ff7b', 'Test4@gmail.com', 4560, 1145, 0),
+(5, 0, 'Test5', '18a95b4e7523458dee7485a4ee3b3280', '', 0, 0, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -316,7 +317,7 @@ ALTER TABLE `orders_points`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
