@@ -8,12 +8,12 @@
     <title>Menu</title>
 </head>
 <body>
-    <h1>Basic menu</h1>
+    <h1>Special menu</h1>
    <table border = "1">
         <tr>
             <td>Owner name</td>
             <td>Item name</td>
-            <td>Money cost</td>
+            <td>Points cost</td>
             <td></td>
         </tr>
         <?php foreach ($owners = getOwners() as $owner) {          
@@ -21,8 +21,8 @@
                 <tr>
                 <td><?=$owner['login'];?></td>
                 <td><?=$item['name'];?></td>
-                <td><?=$item['money'];?></td>
-                <td><button><a href="modules/buy_money.php?id=<?= $item['id']?>&owner=<?=$owner['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
+                <td><?=$item['points'];?></td>
+                <td><button><a href="modules/buy_points.php?id=<?=$item['id']?>&owner=<?=$owner['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
                 </tr>
         <?php } } ?>
    </table>
@@ -44,8 +44,8 @@ function getOwners() : array
 function getItems(int $id) : array {
     global $db;
     $arr[] = 0;
-    $res = mysqli_query($db, "SELECT menu_money.* FROM menu_money
-    INNER JOIN acquired_money ON acquired_money.menu_id = menu_money.id AND acquired_money.user_id = " . $id);
+    $res = mysqli_query($db, "SELECT menu_points.* FROM menu_points
+    INNER JOIN acquired_points ON acquired_points.menu_id = menu_points.id AND acquired_points.user_id = " . $id);
     for ($k = 0; $k < mysqli_num_rows($res); $k++) {
         $arr[$k] = mysqli_fetch_assoc($res);
     }

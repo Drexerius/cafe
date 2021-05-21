@@ -8,11 +8,7 @@
     <title>Owner Menu</title>
 </head>
 <body>
-<?php
-echo '<br>';
-$balance = getBalance();
-echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
-?>
+<h3>Here you can unlock new items for you menu or remove them to get money and points back.</h2>
 <h2>Money menu</h2>
 <table border="1">
     <tr>
@@ -30,7 +26,7 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
         <td><?= $item['points_required']; ?></td>
         <td><?= $item['money']; ?></td>
         <td><?= $item['points']; ?></td>
-        <td><button><a href="modules/buy_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
+        <td><button><a href="modules/unlock_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Unlock</a></button></td>
     </tr>
     <?php } ?>
 </table>
@@ -48,7 +44,7 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
             <td><?= $item['name']; ?></td>
             <td><?= $item['points_required']; ?></td>
             <td><?= $item['points']; ?></td>
-            <td><button><a href="modules/buy_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
+            <td><button><a href="modules/unlock_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Unlock</a></button></td>
         </tr>
     <?php } ?>
 </table>
@@ -70,7 +66,7 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
             <td><?= $item['points_required']; ?></td>
             <td><?= $item['money']; ?></td>
             <td><?= $item['points']; ?></td>
-            <td><button><a href="modules/sell_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Sell</a></button></td>
+            <td><button><a href="modules/remove_money.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Remove</a></button></td>
         </tr>
     <?php } ?>
 </table>
@@ -88,21 +84,15 @@ echo 'Money: ' . $balance[0] . '; Points: ' . $balance[1];
             <td><?= $item['name']; ?></td>
             <td><?= $item['points_required']; ?></td>
             <td><?= $item['points']; ?></td>
-            <td><button><a href="modules/sell_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Sell</a></button></td>
+            <td><button><a href="modules/remove_points.php?id=<?= $item['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Remove</a></button></td>
         </tr>
     <?php } ?>
 </table>
 </body>
 </html>
+
 <?php
-function getBalance() : array
-{
-    global $db;
-    $res = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM users WHERE login = '" . $_SESSION['login'] . "'"));
-    $arr[0] = $res['money'];
-    $arr[1] = $res['points'];
-    return $arr;
-}
+
 function getMoneyMenu() : array
 {
     global $db;
