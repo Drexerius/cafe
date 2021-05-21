@@ -8,11 +8,14 @@
 </head>
 <body>
     <h1>Hello<?php if ($_SESSION['login'] != null) {echo ', ' . $_SESSION['login'];}?></h1>
-    <!-- <h2>Avatar</h2>
-    <form action="" method="post" enctype="multipart/form-data">
+    <?php if ($_SESSION['login'] != null) {
+        ?>
+        <h2>Avatar</h2>
+    <form action="modules/avatar.php" method="post" enctype="multipart/form-data">
         <input type="file" name="avatar">
         <input type="submit" value="Upload">
-    </form> -->
+    </form>
+    <?php } ?>
     <?php if ($_SESSION['login'] != null) {
         echo
         '<button style="margin-top: 20px;"><a href="Modules/log_out.php" style="font-size: 2em; text-decoration: none; color: black;">Log out</a></button>';
@@ -24,17 +27,3 @@
     }?>
 </body>
 </html>
-
-<?php
-// $file = $_FILES['avatar'];
-// $ext = pathinfo($file['name'])['extension'];
-// if (is_uploaded_file($file['tmp_name'])) {
-//     if ($file['size'] > 1024 ** 2 * 1) {
-//         echo('File is too huge');
-//     }
-//     if (in_array($ext, ['png', 'jpg', 'jpeg', 'gif']) === false) {
-//         echo('Wrong file. You should add an image');
-//     }
-//     move_uploaded_file($file['tmp_name'], 'files/' . $file['name']);
-// }
-?>

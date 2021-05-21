@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 21 2021 г., 19:32
+-- Время создания: Май 21 2021 г., 21:01
 -- Версия сервера: 10.4.17-MariaDB
 -- Версия PHP: 8.0.1
 
@@ -74,8 +74,17 @@ INSERT INTO `acquired_points` (`id`, `user_id`, `menu_id`) VALUES
 
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
-  `path` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `path` varchar(96) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `files`
+--
+
+INSERT INTO `files` (`id`, `user_id`, `path`) VALUES
+(2, 2, 'files/Green2.jpg'),
+(4, 1, 'files/Blue2.jpg');
 
 -- --------------------------------------------------------
 
@@ -191,8 +200,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `owner`, `login`, `password`, `email`, `money`, `points`, `avatar_id`) VALUES
-(1, 0, 'Test1', '6779a4fa7ad34e7a8b78f20cbb6ce8a9', 'Test1@gmail.com', 1515, 0, 0),
-(2, 0, 'Test2', '830bf57205215d17a453cf5d8c8212ea', '', 0, 365, 0),
+(1, 0, 'Test1', '6779a4fa7ad34e7a8b78f20cbb6ce8a9', 'Test1@gmail.com', 1515, 0, 4),
+(2, 0, 'Test2', '830bf57205215d17a453cf5d8c8212ea', '', 0, 365, 3),
 (3, 1, 'Test3', 'bd890f18b91394848bc8094675dc0fae', '', 90, 12135, 0),
 (4, 1, 'Test4', 'a19e363ea0e2e612bbdad8e742f2ff7b', 'Test4@gmail.com', 4560, 1145, 0);
 
@@ -220,7 +229,8 @@ ALTER TABLE `acquired_points`
 -- Индексы таблицы `files`
 --
 ALTER TABLE `files`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `files_ibfk_1` (`user_id`);
 
 --
 -- Индексы таблицы `menu_money`
@@ -276,7 +286,7 @@ ALTER TABLE `acquired_points`
 -- AUTO_INCREMENT для таблицы `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `menu_money`
@@ -330,7 +340,7 @@ ALTER TABLE `acquired_points`
 -- Ограничения внешнего ключа таблицы `files`
 --
 ALTER TABLE `files`
-  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `orders_money`
