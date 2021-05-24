@@ -14,6 +14,15 @@
             <input type="file" name="avatar">
             <input type="submit" value="Upload">
         </form>
+        <?php
+        $user_id = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM users WHERE login = '" . $_SESSION['login'] . "'"))['id'];
+        $avatars = mysqli_query($db, "SELECT * FROM files WHERE user_id = " . $user_id);
+        $path = mysqli_fetch_assoc($avatars)['path'];
+        if (mysqli_num_rows($avatars)) {?>
+            <img src="<?=$path?>" alt="">
+            <button style="margin-top: 10px;"><a href="modules/remove_avatar.php" style="font-size: 1em; text-decoration: none; color: black;">Delete avatar</a></button>
+            <?= '<br>' ?>
+        <?php } ?>
         <button style="margin-top: 10px;"><a href="modules/log_out.php" style="font-size: 2em; text-decoration: none; color: black;">Log out</a></button>
     <?php } else { ?>
         <button style="margin-top: 20px;"><a href="index.php?page=sign_up" style="font-size: 2em; text-decoration: none; color: black;">Sign up</a></button>

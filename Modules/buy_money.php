@@ -9,8 +9,10 @@ $item = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM menu_money WHERE id 
 
 if (!$user['owner'] && $user['money'] >= $item['money']) {
     $new_money = $user['money'] - $item['money'];
+    $new_points = $user['points'] + $item['points'];
     $owner_money = $owner['money'] + $item['money'];
     mysqli_query($db, "UPDATE users SET money = $new_money WHERE id = " . $user['id']);
+    mysqli_query($db, "UPDATE users SET points = $new_points WHERE id = " . $user['id']);
     mysqli_query($db, "UPDATE users SET money = $owner_money WHERE id = " . $owner['id']);
     $user_id = $user['id'];
     $item_id = $item['id'];

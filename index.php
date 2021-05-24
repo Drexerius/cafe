@@ -1,7 +1,7 @@
 <?php
 require 'connect.php';
 session_start();
-$page = htmlspecialchars(addslashes($_GET['page']));
+$page = htmlspecialchars(addslashes($_GET['page'] ?? 'main'));
 ?>
 <!DOCTYPE html>
 <html lang="en">

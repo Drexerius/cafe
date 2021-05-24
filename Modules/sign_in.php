@@ -10,6 +10,8 @@ $user = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM users WHERE login = 
 if ($user['password'] == $password) {
     session_start();
     $_SESSION['login'] = $login;
+    $_SESSION['id'] = $user['id'];
+
     header('Location: ../index.php?page=main');
 } else {
     header('Location: ../index.php?page=sign_in');

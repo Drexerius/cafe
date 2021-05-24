@@ -14,7 +14,6 @@
             <td>Owner name</td>
             <td>Item name</td>
             <td>Money cost</td>
-            <td></td>
         </tr>
         <?php foreach ($owners = getOwners() as $owner) {          
             foreach ($item = getItems($owner['id']) as $item) { ?>
@@ -22,7 +21,9 @@
                 <td><?=$owner['login'];?></td>
                 <td><?=$item['name'];?></td>
                 <td><?=$item['money'];?></td>
-                <td><button><a href="modules/buy_money.php?id=<?= $item['id']?>&owner=<?=$owner['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
+                    <?php if ($_SESSION['login']) {?>
+                    <td><button><a href="modules/buy_money.php?id=<?= $item['id']?>&owner=<?=$owner['id']?>" style="font-size: 1em; text-decoration: none; color: black;">Buy</a></button></td>
+                    <?php } ?>
                 </tr>
         <?php } } ?>
    </table>
